@@ -308,13 +308,13 @@ fun MainScreen() {
                         }
 
                         val input1 = text1.trim().split(",").mapNotNull {
-                            it.trim().toIntOrNull()
+                            it.trim().toBigDecimalOrNull()
                         }
                         val input2 = text2.trim().split(",").mapNotNull {
-                            it.trim().toIntOrNull()
+                            it.trim().toBigDecimalOrNull()
                         }
                         val input3 = text3.trim().split(",").mapNotNull {
-                            it.trim().toIntOrNull()
+                            it.trim().toBigDecimalOrNull()
                         }
                         val intersect = input1.intersect(input2.toSet())
                             .intersect(input3.toSet())
