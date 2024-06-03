@@ -47,6 +47,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.brohit.oneclickdrive.ui.theme.OneClickDriveTheme
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -108,11 +109,12 @@ fun MainScreen() {
     var highestNumber by rememberSaveable { mutableStateOf("") }
     val scope = rememberCoroutineScope()
 
+    val state = rememberScrollState()
     Column(
         modifier = Modifier
             .fillMaxSize()
             .imePadding()
-            .verticalScroll(rememberScrollState())
+            .verticalScroll(state)
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
@@ -288,7 +290,7 @@ fun MainScreen() {
                         intersection = ""
                         union = ""
                         highestNumber = ""
-//                        delay(200)
+                        delay(50)
                         if (text1.isBlank()) {
                             text1Error = "Input field is empty"
                         }
@@ -405,9 +407,7 @@ fun MainScreen() {
                             Text(
                                 text = union,
                                 style = MaterialTheme.typography.bodyMedium,
-                                fontWeight = FontWeight.Bold,
-                                maxLines = Int.MAX_VALUE
-
+                                fontWeight = FontWeight.Bold
                             )
                         }
 
